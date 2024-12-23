@@ -1,7 +1,7 @@
 {
   "name": "create-css-modules",
   "displayName": "Create CSS Modules",
-  "description": "",
+  "description": "Plug-in to create a CSS Modules file that matches the component file",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.0.0"
@@ -12,12 +12,56 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
+    "configuration": {
+      "title": "Create CSS Modules",
+      "properties": {
+        "createCSSModules.path": {
+          "type": "string",
+          "default": "./",
+          "description": "Directory to create CSS Modules file"
+        },
+        "createCSSModules.extension": {
+          "type": "string",
+          "default": "css",
+          "enum": [
+            "css",
+            "scss",
+            "sass",
+            "less",
+            "styl",
+            "stylus"
+          ],
+          "description": "File extension of CSS Modules file"
+        }
+      }
+    },
     "commands": [
       {
-        "command": "create-css-modules.helloWorld",
-        "title": "Hello World"
+        "command": "extension.createCSSModules",
+        "title": "Create CSS Modules"
       }
-    ]
+    ],
+    "keybindings": [
+      {
+        "command": "extension.createCSSModules",
+        "key": "ctrl+shift+m",
+        "mac": "cmd+shift+m"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.createCSSModules",
+          "group": "navigation",
+          "when": "resourceExtname =~ /\\.(jsx|tsx|js|ts)$/"
+        }
+      ]
+    }
+  },
+  "icon": "icon.png",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/cukehater/create-css-modules"
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
