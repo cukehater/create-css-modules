@@ -24,8 +24,8 @@ You can configure the following options in VSCode's `settings.json`
 
 ```json
 {
-  "createCSSModules.path": "./styles", // Directory path for CSS files
-  "createCSSModules.extension": ".scss" // File extension for CSS files
+  "createCSSModules.path": "./styles",
+  "createCSSModules.extension": ".scss"
 }
 ```
 
@@ -34,7 +34,7 @@ You can configure the following options in VSCode's `settings.json`
 | Option                       | Description                                            | Default |
 | ---------------------------- | ------------------------------------------------------ | ------- |
 | `createCSSModules.path`      | Directory path where CSS Modules files will be created | `./`    |
-| `createCSSModules.extension` | File extension for the generated CSS files             | `.css`  |
+| `createCSSModules.extension` | File extension for the generated CSS files             | `css`   |
 
 ## 🎥 Usage Example
 
