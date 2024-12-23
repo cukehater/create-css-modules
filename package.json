@@ -10,6 +10,7 @@
     "Other"
   ],
   "activationEvents": [],
+  "publisher": "cukehater",
   "main": "./out/extension.js",
   "contributes": {
     "configuration": {
