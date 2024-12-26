@@ -1,15 +1,18 @@
 # Create CSS Modules
 
-A VSCode extension that makes it easy to create CSS Modules files.
+Easily creates matching CSS Modules files for your components
 
 ## ✨ Key Features
 
-- Automatically creates CSS Modules files with the same name as your current file
-- Flexible directory configuration for file creation
-- Supports various CSS extensions
-  - `css`, `scss`, `sass`, `less`, `styl`, `stylus`
-- Compatible file formats
-  - `js`, `jsx`, `ts`, `tsx`
+- One-click creation of CSS Modules files matching your component names
+- Automatically inserts the import statement to the top of the file
+- Configurable file paths and extensions
+- Support for multiple CSS preprocessors
+
+## 💎 Supported File Extensions
+
+- Component files: `js`, `jsx`, `ts`, `tsx`
+- Style files: `css`, `scss`, `sass`, `less`, `styl`, `stylus`
 
 ## ⌨️ Default Keyboard Shortcuts
 
@@ -20,22 +23,28 @@ A VSCode extension that makes it easy to create CSS Modules files.
 
 ## ⚙️ Configuration
 
-You can configure the following options in VSCode's `settings.json`
+Customize the extension in your VSCode `settings.json`
 
 ```json
 {
   "createCSSModules.path": "./styles",
-  "createCSSModules.extension": "scss"
+  "createCSSModules.extension": "scss",
+  "createCSSModules.autoImport": true,
+  "createCSSModules.identifier": "s"
 }
 ```
 
-### Configuration Options
+### Settings Reference
 
-| Option                       | Description                                            | Default |
-| ---------------------------- | ------------------------------------------------------ | ------- |
-| `createCSSModules.path`      | Directory path where CSS Modules files will be created | `./`    |
-| `createCSSModules.extension` | File extension for the generated CSS files             | `css`   |
+| Option                        | Description                                 | Default  |
+| ----------------------------- | ------------------------------------------- | -------- |
+| `createCSSModules.path`       | Target directory for CSS Modules files      | `./`     |
+| `createCSSModules.extension`  | Preferred CSS file extension                | `css`    |
+| `createCSSModules.autoImport` | Enable automatic import statement insertion | `true`   |
+| `createCSSModules.identifier` | CSS Modules import identifier               | `styles` |
 
-## 🎥 Usage Example
+## 🎥 Demo
+
+See it in action
 
 ![Demo Screen](./demo.gif)

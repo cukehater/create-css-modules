@@ -89,7 +89,30 @@ const createCSSModulesFile = (currentDirectory: string, fileName: string) => {
     }
   })
 
+  insertImport(`${settedFilePath}/${moduleFileName}`)
+
   vscode.window.showInformationMessage('Successfully created CSS Modules file!')
+}
+
+// 활성 파일 최상단에 CSS 파일 import
+const insertImport = (filePath: string) => {
+  const config = vscode.workspace.getConfiguration('createCSSModules')
+  const isAutoImport = config.get('autoImport', true) // 자동 Import (기본값: true)
+  const identifier = config.get('identifier', 'styles') // 식별자 (기본값: styles)
+  const editor = vscode.window.activeTextEditor
+
+  if (!isAutoImport) {
+    return
+  }
+
+  if (editor) {
+    editor.edit(editBuilder => {
+      editBuilder.insert(
+        editor.document.lineAt(0).range.start,
+        `import ${identifier} from '${filePath}';\n\n`
+      )
+    })
+  }
 }
 
 // 생성할 파일 유무 체크 함수

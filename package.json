@@ -1,8 +1,8 @@
 {
   "name": "create-css-modules",
   "displayName": "Create CSS Modules",
-  "description": "Plug-in to create a CSS Modules file that matches the component file",
-  "version": "0.0.2",
+  "description": "Easily creates matching CSS Modules files for your components",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -11,6 +11,7 @@
   ],
   "keywords": [
     "css modules",
+    "module css",
     "css",
     "scss",
     "sass",
@@ -42,6 +43,16 @@
             "stylus"
           ],
           "description": "File extension of CSS Modules file"
+        },
+        "createCSSModules.autoImport": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically insert import statement to the top of the file"
+        },
+        "createCSSModules.identifier": {
+          "type": "string",
+          "default": "styles",
+          "description": "Identifier of CSS Modules file"
         }
       }
     },

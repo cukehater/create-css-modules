@@ -6,12 +6,21 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
-## [0.0.1] - 2024-12-23
+## [0.0.3] - 2024-12-26
 
-- Initial release
+### Added
+
+- Added automatic import feature for CSS module files
+- Added customization options for CSS module file identifiers
 
 ## [0.0.2] - 2024-12-26
 
 ### Changed
 
-- Update README
+- Updated README.md
+
+## [0.0.1] - 2024-03-25
+
+### Added
+
+- Initial release
