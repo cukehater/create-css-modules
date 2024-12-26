@@ -6,4 +6,12 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.0.1] - 2024-12-23
+
 - Initial release
+
+## [0.0.2] - 2024-12-26
+
+### Changed
+
+- Update README

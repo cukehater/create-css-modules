@@ -25,7 +25,7 @@ You can configure the following options in VSCode's `settings.json`
 ```json
 {
   "createCSSModules.path": "./styles",
-  "createCSSModules.extension": ".scss"
+  "createCSSModules.extension": "scss"
 }
 ```
 
