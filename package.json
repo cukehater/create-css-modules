@@ -9,6 +9,15 @@
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "css modules",
+    "css",
+    "scss",
+    "sass",
+    "less",
+    "styl",
+    "stylus"
+  ],
   "activationEvents": [],
   "publisher": "cukehater",
   "main": "./out/extension.js",
