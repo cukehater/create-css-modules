@@ -89,30 +89,69 @@ const createCSSModulesFile = (currentDirectory: string, fileName: string) => {
     }
   })
 
-  insertImport(`${settedFilePath}/${moduleFileName}`)
+  // 파일 경로 설정
+  const importFilePath =
+    settedFilePath !== './'
+      ? `${settedFilePath}/${moduleFileName}`
+      : `./${moduleFileName}`
+
+  insertImport(importFilePath)
 
   vscode.window.showInformationMessage('Successfully created CSS Modules file!')
 }
 
-// 활성 파일 최상단에 CSS 파일 import
 const insertImport = (filePath: string) => {
   const config = vscode.workspace.getConfiguration('createCSSModules')
-  const isAutoImport = config.get('autoImport', true) // 자동 Import (기본값: true)
-  const identifier = config.get('identifier', 'styles') // 식별자 (기본값: styles)
+  const isAutoImport = config.get('autoImport', true)
+  const identifier = config.get('identifier', 'styles')
   const editor = vscode.window.activeTextEditor
 
-  if (!isAutoImport) {
+  if (!isAutoImport || !editor) {
     return
   }
 
-  if (editor) {
-    editor.edit(editBuilder => {
-      editBuilder.insert(
-        editor.document.lineAt(0).range.start,
-        `import ${identifier} from '${filePath}';\n\n`
-      )
-    })
+  const document = editor.document
+  const text = document.getText()
+  const lines = text.split('\n')
+
+  // 지시문 찾기 ('use strict', 'use server' 등)
+  let directiveLineIndex = -1
+  for (let i = 0; i < lines.length; i++) {
+    if (
+      lines[i].trim().startsWith("'use ") ||
+      lines[i].trim().startsWith('"use ')
+    ) {
+      directiveLineIndex = i
+    }
   }
+
+  // import 구문 찾기
+  let lastImportLineIndex = -1
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].trim().startsWith('import ')) {
+      lastImportLineIndex = i
+    }
+  }
+
+  // 삽입 위치 결정
+  let insertPosition: vscode.Position
+  if (lastImportLineIndex !== -1) {
+    // import 구문이 있는 경우 마지막 import 구문 다음 줄에 삽입
+    insertPosition = new vscode.Position(lastImportLineIndex + 1, 0)
+  } else if (directiveLineIndex !== -1) {
+    // import 구문이 없고 지시문만 있는 경우 두 줄 아래에 삽입
+    insertPosition = new vscode.Position(directiveLineIndex + 2, 0)
+  } else {
+    // 둘 다 없는 경우 파일 최상단에 삽입
+    insertPosition = new vscode.Position(0, 0)
+  }
+
+  editor.edit(editBuilder => {
+    editBuilder.insert(
+      insertPosition,
+      `import ${identifier} from '${filePath}';\n`
+    )
+  })
 }
 
 // 생성할 파일 유무 체크 함수

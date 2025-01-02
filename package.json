@@ -2,7 +2,7 @@
   "name": "create-css-modules",
   "displayName": "Create CSS Modules",
   "description": "Easily creates matching CSS Modules files for your components",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.85.0"
   },

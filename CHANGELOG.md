@@ -6,6 +6,16 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.0.4] - 2025-01-01
+
+### Changed
+
+- Changed the insertion position of CSS module files to be inserted after the last import statement or after the directive statement
+
+### Fixed
+
+- Fixed incorrect import path generation for CSS Modules
+
 ## [0.0.3] - 2024-12-26
 
 ### Added
